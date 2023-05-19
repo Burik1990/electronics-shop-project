@@ -9,11 +9,13 @@ class Item:
 
     @staticmethod
     def string_to_number(str_num: str):
+        '''возвращаем число из числа-строки'''
         return int(float(str_num))
 
 
     @classmethod
     def instantiate_from_csv(cls, path='../src/items.csv'):
+        '''инициализируем экземпляры класса `Item` данными из файла _src/items.csv_'''
         cls.all.clear()
         with open(path, newline='') as csvfile:
             reader = csv.DictReader(csvfile)
