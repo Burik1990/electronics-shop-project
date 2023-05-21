@@ -9,13 +9,13 @@ class Item:
 
     @staticmethod
     def string_to_number(str_num: str):
-        '''возвращаем число из числа-строки'''
+        '''Возвращаем число из числа-строки'''
         return int(float(str_num))
 
 
     @classmethod
     def instantiate_from_csv(cls, path='../src/items.csv'):
-        '''инициализируем экземпляры класса `Item` данными из файла _src/items.csv_'''
+        '''Инициализируем экземпляры класса `Item` данными из файла _src/items.csv_'''
         cls.all.clear()
         with open(path, newline='') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -36,6 +36,13 @@ class Item:
         self.price = price
         self.quantity = quantity
 
+    def __repr__(self):
+        '''Отображение информации об объекте класса в режиме отладки (для разработчиков)'''
+        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        '''Отображение информации об объекте класса для пользователей'''
+        return f'{self.__name}'
 
     @property
     def name(self):
@@ -62,6 +69,3 @@ class Item:
         Применяет установленную скидку для конкретного товара.
         """
         self.price *= Item.pay_rate
-
-# Item.instantiate_from_csv()
-# print(len(Item.all))
