@@ -73,4 +73,4 @@ class Item:
     def __add__(self, other):
         if isinstance(other, self.__class__):
             return self.quantity + other.quantity
-        return None
+        raise Exception('Сложение невозможно')

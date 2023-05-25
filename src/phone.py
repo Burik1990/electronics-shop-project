@@ -2,6 +2,8 @@ from src.item import Item
 
 
 class Phone(Item):
+    '''Класс для товара "телефон"'''
+
     def __init__(self, name: str, price: float, quantity: int, number_of_sim: int):
         super().__init__(name, price, quantity)
         self.__number_of_sim = number_of_sim
@@ -15,7 +17,7 @@ class Phone(Item):
         if new_num > 0 and type(new_num) is int:
             self.__number_of_sim = new_num
         else:
-            print('ValueError: Количество физических SIM-карт должно быть целым числом больше нуля.')
+            raise Exception('Количество физических SIM-карт должно быть целым числом больше нуля')
 
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity}, {self.number_of_sim})"
